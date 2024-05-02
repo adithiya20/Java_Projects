@@ -9,6 +9,16 @@ public class Employee {
 	private String contact;
 	
 	
+	public Employee(String firstName, String lastName, String username, String password, String address,
+			String contact) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.contact = contact;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -44,5 +54,10 @@ public class Employee {
 	}
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+	
+	@Override
+	public String toString() {
+		return "["+getFirstName()+","+getLastName()+","+getUsername()+","+getPassword()+","+getAddress()+","+getContact()+"]";
 	}
 }

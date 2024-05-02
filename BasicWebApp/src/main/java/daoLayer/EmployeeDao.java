@@ -7,7 +7,7 @@ public class EmployeeDao {
    
 	public int registerEmployee(Employee employee) throws ClassNotFoundException {
         String INSERT_USERS_SQL = "INSERT INTO employee" +
-            "  (id, first_name, last_name, username, password, address, contact) VALUES " +
+            "  (id, first_name, last_name, username, pass_word, address, contact) VALUES " +
             " (?, ?, ?, ?, ?,?,?);";
 
         int result = 0;
@@ -15,8 +15,7 @@ public class EmployeeDao {
         //SQL Driver name
         Class.forName("com.mysql.jdbc.Driver");
 
-        try (Connection connection = DriverManager
-            .getConnection("jdbc:mysql://localhost:3306/employees", "root", "Alliswell12!");
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employees", "root", "Alliswell12!");
 
             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
