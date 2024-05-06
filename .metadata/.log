@@ -527,3 +527,9 @@ java.lang.NullPointerException: Cannot invoke "org.eclipse.core.resources.IResou
 
 !ENTRY org.eclipse.wst.sse.core 2 2 2024-05-02 11:49:22.166
 !MESSAGE Detected content type did not match one for which a model handler is registered: org.eclipse.wildwebdeveloper.html vs. org.eclipse.wst.html.core.htmlsource
+
+!ENTRY org.eclipse.wst.sse.core 2 2 2024-05-02 18:29:13.463
+!MESSAGE Detected content type did not match one for which a model handler is registered: org.eclipse.wildwebdeveloper.html vs. org.eclipse.wst.html.core.htmlsource
+
+!ENTRY org.eclipse.wst.sse.core 2 2 2024-05-02 18:29:13.964
+!MESSAGE Detected content type did not match one for which a model handler is registered: org.eclipse.wildwebdeveloper.html vs. org.eclipse.wst.html.core.htmlsource
