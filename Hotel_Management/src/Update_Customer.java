@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
-public class Update_Room extends JFrame implements ActionListener{
+public class Update_Customer extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,7 +28,7 @@ public class Update_Room extends JFrame implements ActionListener{
 	private JTextField availability_textbox;
 
 
-	public Update_Room() {
+	public Update_Customer() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 451, 541);
 		contentPane = new JPanel();
@@ -190,5 +190,8 @@ public class Update_Room extends JFrame implements ActionListener{
 		}
         
 	return -1;
+	}
+	public static void main(String[] args) {
+		new Update_Customer();
 	}
 }

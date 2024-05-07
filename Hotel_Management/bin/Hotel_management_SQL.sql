@@ -11,7 +11,7 @@ CREATE TABLE employee(name varchar(25) not null, age varchar(10), gender varchar
 DESCRIBE employee;
 SELECT * FROM employee;
 
-CREATE TABLE room(roomnumber int(10) not null, availability varchar(20), cleaning_status varchar(20), price double(10,2), bed_type varchar(20));
+CREATE TABLE room(roomnumber varchar(10) not null, availability varchar(20), cleaning_status varchar(20), price VARCHAR(25), bed_type varchar(20));
 SELECT * FROM room;
 
 CREATE TABLE department(department varchar(50), budget varchar(20));

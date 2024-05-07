@@ -132,8 +132,8 @@ public class Reception extends JFrame {
 
         contentPane.add(btnNewButton_4);
 
-		JButton btnNewButton_5 = new JButton("Update Check Status");
-		btnNewButton_5.addActionListener(new ActionListener() {
+		JButton btnUpdateCustomer = new JButton("Update Customer Info");
+		btnUpdateCustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
 				//UpdateCheck update = new UpdateCheck();
@@ -146,14 +146,14 @@ public class Reception extends JFrame {
 			}
 		});
 		
-		btnNewButton_5.setBounds(10, 232, 200, 30);
-        btnNewButton_5.setBackground(Color.BLACK);
-        btnNewButton_5.setForeground(Color.WHITE);
+		btnUpdateCustomer.setBounds(10, 232, 200, 30);
+        btnUpdateCustomer.setBackground(Color.BLACK);
+        btnUpdateCustomer.setForeground(Color.WHITE);
 
-        contentPane.add(btnNewButton_5);
+        contentPane.add(btnUpdateCustomer);
 
-		JButton btnNewButton_6 = new JButton("Update Room Status");
-		btnNewButton_6.addActionListener(new ActionListener() {
+		JButton bntUpdateRoom = new JButton("Update Room Status");
+		bntUpdateRoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
 					//UpdateRoom room = new UpdateRoom();
@@ -165,30 +165,30 @@ public class Reception extends JFrame {
 				}
 			}
 		});
-		btnNewButton_6.setBounds(10, 272, 200, 30);
-        btnNewButton_6.setBackground(Color.BLACK);
-        btnNewButton_6.setForeground(Color.WHITE);
+		
+				JButton btnUpdateEmployees = new JButton("Update Employee Info");
+				btnUpdateEmployees.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							ShowRooms search = new ShowRooms();
+							search.setVisible(true);
+					        setVisible(false);
+						}
+						catch (Exception ss){
+							ss.printStackTrace();
+						}
+					}
+				});
+				btnUpdateEmployees.setBounds(10, 313, 200, 30);
+				btnUpdateEmployees.setBackground(Color.BLACK);
+				btnUpdateEmployees.setForeground(Color.WHITE);
+				
+				        contentPane.add(btnUpdateEmployees);
+		bntUpdateRoom.setBounds(10, 272, 200, 30);
+        bntUpdateRoom.setBackground(Color.BLACK);
+        bntUpdateRoom.setForeground(Color.WHITE);
 
-        contentPane.add(btnNewButton_6);
-
-		JButton btnSearchRoom = new JButton("Search Room");
-		btnSearchRoom.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					ShowRooms search = new ShowRooms();
-					search.setVisible(true);
-			        setVisible(false);
-				}
-				catch (Exception ss){
-					ss.printStackTrace();
-				}
-			}
-		});
-		btnSearchRoom.setBounds(10, 313, 200, 30);
-        btnSearchRoom.setBackground(Color.BLACK);
-        btnSearchRoom.setForeground(Color.WHITE);
-
-        contentPane.add(btnSearchRoom);
+        contentPane.add(bntUpdateRoom);
 		
 		JButton btnNewButton_7 = new JButton("Log Out");
 		btnNewButton_7.addActionListener(new ActionListener() {
@@ -203,12 +203,18 @@ public class Reception extends JFrame {
 				
 			}
 		});
-		btnNewButton_7.setBounds(10, 353, 200, 30);
+		btnNewButton_7.setBounds(10, 393, 200, 30);
         btnNewButton_7.setBackground(Color.BLACK);
         btnNewButton_7.setForeground(Color.WHITE);
 
         contentPane.add(btnNewButton_7);
         getContentPane().setBackground(Color.WHITE);
+        
+        JButton btnUpdateDriver = new JButton("Update Driver Info");
+        btnUpdateDriver.setForeground(Color.WHITE);
+        btnUpdateDriver.setBackground(Color.BLACK);
+        btnUpdateDriver.setBounds(10, 354, 200, 30);
+        contentPane.add(btnUpdateDriver);
         
         setVisible(true);
 }
