@@ -172,7 +172,6 @@ public class Update_Room extends JFrame implements ActionListener{
 	public int updatebutton_connection(String roomString, String avail,String cleaning_status,String price,String bed_type){
 		 
 		String query = "UPDATE room SET roomnumber=?,availability=?,cleaning_status=?,price=?,bed_type=?";
-		String [] data = new String[5];
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
@@ -190,5 +189,9 @@ public class Update_Room extends JFrame implements ActionListener{
 		}
         
 	return -1;
+	}
+	
+	public static void main(String[] args) {
+		new Update_Room();
 	}
 }

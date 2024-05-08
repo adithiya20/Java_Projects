@@ -74,7 +74,7 @@ public class ShowDrivers extends JFrame{
 					tblData.setColumnIdentifiers(colName);
 				}
             	
-            	String[] columns= {"Name","Age","Gender","Car Company","Car Model","Availability","Location"};
+            	String[] columns= {"Name","Age","Gender","Car Company","Car Model","Availability"};
             	for (int i = 0; i < columns.length; i++) {
             		table.getColumnModel().getColumn(i).setHeaderValue(columns[i]);
 				}
@@ -88,10 +88,9 @@ public class ShowDrivers extends JFrame{
                 	 String car_comp = rs.getString("car_company"); 
                 	 String car_model= rs.getString("car_model"); 
                 	 String avail= rs.getString("availability"); 
-                	 String location = rs.getString("location"); 
                 	 
                 	//save these values in array format
-                	 String [] data = {name,age,gender,car_comp,car_model,avail,location};
+                	 String [] data = {name,age,gender,car_comp,car_model,avail};
                 	 tblData.addRow(data);
                 	 
                 	 }
@@ -100,8 +99,6 @@ public class ShowDrivers extends JFrame{
 				e.printStackTrace();
 			} 
 }
-	public static void main(String[] args) {
-		new ShowDrivers();
-	} 
+
 }
 

@@ -166,7 +166,7 @@ public class AddCustomer extends JFrame implements ActionListener {
 		
 		
 		if(e.getSource() == add_button){
-    		String query =  "INSERT INTO customer(ID, phone_number,name,gender,country,roomnumber,checkin_time,deposit) VALUES(?,?,?,?,?,?,?,?)";
+    		String query =  "INSERT INTO customer(document, phone_number,name,gender,country,roomnumber,checkin_time,deposit) VALUES(?,?,?,?,?,?,?,?)";
     		String q2 = "UPDATE room SET availability = 'Occupied' WHERE roomnumber = '"+room_number+"'";
     		try {
     		Connection_demo c = new Connection_demo();

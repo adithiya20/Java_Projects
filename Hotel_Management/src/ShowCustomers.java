@@ -82,7 +82,7 @@ public class ShowCustomers extends JFrame{
            
             	 
             	 while(rs.next()) { 
-            		 String id = rs.getString("ID"); 
+            		 String id = rs.getString("document"); 
                 	 String number= rs.getString("phone_number"); 
                 	 String name = rs.getString("name"); 
                 	 String gender= rs.getString("gender"); 
@@ -95,16 +95,13 @@ public class ShowCustomers extends JFrame{
                 	 
                 	//save these values in array format
                 	 String [] data = {id,number,name,gender,country,room_num,check_in,check_out,deposit};
-                	 System.out.println(Arrays.toString(data));
+                	 //System.out.println(Arrays.toString(data));
                 	 tblData.addRow(data);
                 	 }
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-	}
-	public static void main(String[] args) {
-		new ShowCustomers();
 	}
 
 }
