@@ -20,16 +20,20 @@ public class Update_Employee extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField document_textbox;
 	private JTextField name_textbox;
 	private JTextField gender_textbox;
-	private JTextField country_textbox;
 	private JButton update_button,check_button,exit_button;
-	private JTextField phonenum_textbox;
-	private JTextField roomnum_textbox;
-	private JTextField checkin_textbox;
-	private JTextField checkout_textbox;
-	private JTextField deposit_textbox;
+	private JTextField age_textbox;
+	private JTextField job_textbox;
+	private JLabel job_text;
+	private JTextField salary_textbox;
+	private JLabel salary_text;
+	private JTextField phone_textbox;
+	private JLabel phone_num_text;
+	private JTextField email_textbox;
+	private JLabel email_text;
+	private JTextField id_textbox;
+	private JLabel id_text;
 
 
 	public Update_Employee() {
@@ -41,106 +45,97 @@ public class Update_Employee extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		document_textbox = new JTextField();
-		document_textbox.setBounds(175, 77, 142, 20);
-		contentPane.add(document_textbox);
-		document_textbox.setColumns(10);
-		
-		JLabel document_text = new JLabel("Document Type:");
-		document_text.setBounds(56, 80, 91, 14);
-		contentPane.add(document_text);
-		
-		JLabel phonenum_text = new JLabel("Phone Number:");
-		phonenum_text.setBounds(56, 112, 91, 14);
-		contentPane.add(phonenum_text);
-		
 		name_textbox = new JTextField();
 		name_textbox.setColumns(10);
-		name_textbox.setBounds(175, 141, 142, 20);
+		name_textbox.setBounds(171, 106, 142, 20);
 		contentPane.add(name_textbox);
 		
 		JLabel name_text = new JLabel("Name:");
-		name_text.setBounds(56, 144, 91, 14);
+		name_text.setBounds(52, 109, 91, 14);
 		contentPane.add(name_text);
 		
 		gender_textbox = new JTextField();
 		gender_textbox.setColumns(10);
-		gender_textbox.setBounds(175, 180, 142, 20);
+		gender_textbox.setBounds(171, 166, 142, 20);
 		contentPane.add(gender_textbox);
 		
 		JLabel gender_text = new JLabel("Gender:");
-		gender_text.setBounds(56, 183, 91, 14);
+		gender_text.setBounds(52, 169, 91, 14);
 		contentPane.add(gender_text);
 		
-		country_textbox = new JTextField();
-		country_textbox.setColumns(10);
-		country_textbox.setBounds(175, 227, 142, 20);
-		contentPane.add(country_textbox);
-		
-		JLabel country_text = new JLabel("Country:");
-		country_text.setBounds(56, 230, 91, 14);
-		contentPane.add(country_text);
-		
-		JLabel title_text = new JLabel("UPDATE CUSTOMER INFO");
+		JLabel title_text = new JLabel("UPDATE EMPLOYEE INFO");
 		title_text.setFont(new Font("Tahoma", Font.BOLD, 21));
-		title_text.setBounds(42, 28, 331, 39);
+		title_text.setBounds(66, 28, 331, 39);
 		contentPane.add(title_text);
 		
 		check_button = new JButton("Check");
 		check_button.addActionListener(this);
-		check_button.setBounds(42, 414, 89, 23);
+		check_button.setBounds(42, 341, 89, 23);
 		contentPane.add(check_button);
 		
 		update_button = new JButton("Update");
 		update_button.addActionListener(this);
-		update_button.setBounds(167, 414, 89, 23);
+		update_button.setBounds(167, 341, 89, 23);
 		contentPane.add(update_button);
 		
 		exit_button = new JButton("Back");
 		exit_button.addActionListener(this);
-		exit_button.setBounds(284, 414, 89, 23);
+		exit_button.setBounds(284, 341, 89, 23);
 		contentPane.add(exit_button);
 		
-		phonenum_textbox = new JTextField();
-		phonenum_textbox.setColumns(10);
-		phonenum_textbox.setBounds(175, 109, 142, 20);
-		contentPane.add(phonenum_textbox);
+		JLabel age_text = new JLabel("Age:");
+		age_text.setBounds(52, 138, 91, 14);
+		contentPane.add(age_text);
 		
-		roomnum_textbox = new JTextField();
-		roomnum_textbox.setColumns(10);
-		roomnum_textbox.setBounds(175, 270, 142, 20);
-		contentPane.add(roomnum_textbox);
+		age_textbox = new JTextField();
+		age_textbox.setColumns(10);
+		age_textbox.setBounds(171, 135, 142, 20);
+		contentPane.add(age_textbox);
 		
-		JLabel roomnum_text = new JLabel("Room Number:");
-		roomnum_text.setBounds(56, 273, 91, 14);
-		contentPane.add(roomnum_text);
+		job_textbox = new JTextField();
+		job_textbox.setColumns(10);
+		job_textbox.setBounds(171, 197, 142, 20);
+		contentPane.add(job_textbox);
 		
-		checkin_textbox = new JTextField();
-		checkin_textbox.setColumns(10);
-		checkin_textbox.setBounds(175, 301, 142, 20);
-		contentPane.add(checkin_textbox);
+		job_text = new JLabel("Job:");
+		job_text.setBounds(52, 200, 91, 14);
+		contentPane.add(job_text);
 		
-		JLabel checkin_text = new JLabel("Check-in Time:");
-		checkin_text.setBounds(56, 304, 91, 14);
-		contentPane.add(checkin_text);
+		salary_textbox = new JTextField();
+		salary_textbox.setColumns(10);
+		salary_textbox.setBounds(171, 228, 142, 20);
+		contentPane.add(salary_textbox);
 		
-		checkout_textbox = new JTextField();
-		checkout_textbox.setColumns(10);
-		checkout_textbox.setBounds(175, 332, 142, 20);
-		contentPane.add(checkout_textbox);
+		salary_text = new JLabel("Salary:");
+		salary_text.setBounds(52, 231, 91, 14);
+		contentPane.add(salary_text);
 		
-		JLabel checkout_text = new JLabel("Check-out Time:");
-		checkout_text.setBounds(56, 335, 91, 14);
-		contentPane.add(checkout_text);
+		phone_textbox = new JTextField();
+		phone_textbox.setColumns(10);
+		phone_textbox.setBounds(171, 259, 142, 20);
+		contentPane.add(phone_textbox);
 		
-		deposit_textbox = new JTextField();
-		deposit_textbox.setColumns(10);
-		deposit_textbox.setBounds(175, 363, 142, 20);
-		contentPane.add(deposit_textbox);
+		phone_num_text = new JLabel("Phone Number:");
+		phone_num_text.setBounds(52, 262, 91, 14);
+		contentPane.add(phone_num_text);
 		
-		JLabel deposit_text = new JLabel("Deposit:");
-		deposit_text.setBounds(56, 366, 91, 14);
-		contentPane.add(deposit_text);
+		email_textbox = new JTextField();
+		email_textbox.setColumns(10);
+		email_textbox.setBounds(171, 290, 142, 20);
+		contentPane.add(email_textbox);
+		
+		email_text = new JLabel("Email:");
+		email_text.setBounds(52, 293, 91, 14);
+		contentPane.add(email_text);
+		
+		id_textbox = new JTextField();
+		id_textbox.setColumns(10);
+		id_textbox.setBounds(171, 75, 142, 20);
+		contentPane.add(id_textbox);
+		
+		id_text = new JLabel("ID:");
+		id_text.setBounds(52, 78, 91, 14);
+		contentPane.add(id_text);
 		setVisible(true);
 	}
 
@@ -149,36 +144,33 @@ public class Update_Employee extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource()==update_button){
-			
-			String document = document_textbox.getText();
-			String pnum = (String)phonenum_textbox.getText();
+			String id = id_textbox.getText();			
 			String name = name_textbox.getText();
+			String age = age_textbox.getText();
 			String gender = gender_textbox.getText();
-			String country= country_textbox.getText();
-			String roomnum= roomnum_textbox.getText();
-			String checkin= checkin_textbox.getText();
-			String checkout= checkout_textbox.getText();
-			String deposit= deposit_textbox.getText();
+			String job= job_textbox.getText();
+			String salary= salary_textbox.getText();
+			String pnum= phone_textbox.getText();
+			String email= email_textbox.getText();
 			
-			int result=updatebutton_connection(document,pnum,name,gender,country,roomnum,checkin,checkout,deposit);
+			int result=updatebutton_connection(id,name, age, gender, job, salary, pnum, email);
 			if (result==1) {
-				JOptionPane.showMessageDialog(null, "Customer Successfully Updated");
+				JOptionPane.showMessageDialog(null, "Employee Successfully Updated");
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Customer Update Failed");
+				JOptionPane.showMessageDialog(null, "Employee Update Failed");
 			}
 		}
 		else if(e.getSource()==check_button) {
-			String[] customer_data=checkbutton_connection();
-			document_textbox.setText(customer_data[0]);
-			phonenum_textbox.setText(customer_data[1]);
-			name_textbox.setText(customer_data[2]);
-			gender_textbox.setText(customer_data[3]);
-			country_textbox.setText(customer_data[4]);
-			roomnum_textbox.setText(customer_data[5]);
-			checkin_textbox.setText(customer_data[6]);
-			checkout_textbox.setText(customer_data[7]);
-			deposit_textbox.setText(customer_data[8]);
+			String[] employee_data=checkbutton_connection();
+			//id_textbox.setText(employee_data[0]);
+			name_textbox.setText(employee_data[1]);
+			age_textbox.setText(employee_data[2]);
+			gender_textbox.setText(employee_data[3]);
+			job_textbox.setText(employee_data[4]);
+			salary_textbox.setText(employee_data[5]);
+			phone_textbox.setText(employee_data[6]);
+			email_textbox.setText(employee_data[7]);
 		}
 		else if(e.getSource() == exit_button) {
 			setVisible(false);
@@ -188,33 +180,30 @@ public class Update_Employee extends JFrame implements ActionListener{
 	
 	public String[] checkbutton_connection(){
 		 
-		String query = "SELECT * FROM customer WHERE name='"+name_textbox.getText()+"'";
-		String [] data = new String[9];
+		String query = "SELECT * FROM employee WHERE ID='"+id_textbox.getText()+"'";
+		String [] data = new String[8];
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
-         	ResultSet rs = stmt.executeQuery();     	
+         	ResultSet rs = stmt.executeQuery();     
          	         	 
          	 while(rs.next()) { 
-         		 String document = rs.getString("document"); 
-             	 String pnum= rs.getString("phone_number"); 
-             	 String name =rs.getString("name"); 
-             	 String gender= rs.getString("gender"); 
-             	 String country= rs.getString("country");
-             	String roomnum= rs.getString("roomnumber");
-             	String checkin= rs.getString("checkin_time");
-             	String checkout= rs.getString("checkout_time");
-             	String deposit= rs.getString("deposit");
-             	 data[0]=document;
-             	 data[1]=pnum;
-             	 data[2]=name;
+         		 String id = rs.getString("ID");
+             	 String name =rs.getString("E_name"); 
+             	 String age=rs.getString("Age");
+             	 String gender= rs.getString("Gender"); 
+             	 String job= rs.getString("Job");
+             	String salary= rs.getString("Salary");
+             	String pnum= rs.getString("Phone");
+             	String email= rs.getString("Email");
+             	data[0]=id;
+             	 data[1]=name;
+             	 data[2]=age;
              	 data[3]=gender;
-             	 data[4]=country;
-             	data[5]=roomnum;
-             	data[6]=checkin;
-             	data[7]=checkout;
-             	data[8]=deposit;
-            	 
+             	 data[4]=job;
+             	 data[5]=salary;
+             	data[6]=pnum;
+             	data[7]=email;            	 
              	 }
          	 rs.close();
          	 c.getC().close();
@@ -226,22 +215,20 @@ public class Update_Employee extends JFrame implements ActionListener{
 	
 	}
 	
-	public int updatebutton_connection(String document, String pnum,String name,String gender,String country,String roomnumber,String checkin,String checkout, String deposit){
+	public int updatebutton_connection(String id,String name,String age,String gender,String job,String salary,String pnum,String email){
 		 
-		String query = "UPDATE customer SET document=?,phone_number=?,name=?,gender=?,country=?,roomnumber=?,checkin_time=?,checkout_time=?,deposit=?";
+		String query = "UPDATE employee SET E_name=?,Age=?,Gender=?,Job=?,Salary=?,Phone=?,Email=? WHERE ID='"+id+"'";
 		
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
-         	stmt.setString(1,document);
-         	stmt.setString(2, pnum);
-         	stmt.setString(3, name);
-         	stmt.setString(4, gender);
-         	stmt.setString(5,country);
-         	stmt.setString(6,roomnumber);
-         	stmt.setString(7,checkin);
-         	stmt.setString(8,checkout);
-         	stmt.setString(9,deposit);
+         	stmt.setString(1,name);
+         	stmt.setString(2, age);
+         	stmt.setString(3, gender);
+         	stmt.setString(4, job);
+         	stmt.setString(5,salary);
+         	stmt.setString(6,pnum);
+         	stmt.setString(7,email);
          	
          	stmt.executeUpdate();
          	 c.getC().close();

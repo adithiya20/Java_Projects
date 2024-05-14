@@ -19,7 +19,7 @@ public class ShowDrivers extends JFrame{
 	private JTable table;
 
 	ShowDrivers(){
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setBounds(450, 200, 1100, 600);
 			JPanel contentPane = new JPanel();
 			this.setTitle("DRIVER INFORMATION");
@@ -74,23 +74,23 @@ public class ShowDrivers extends JFrame{
 					tblData.setColumnIdentifiers(colName);
 				}
             	
-            	String[] columns= {"Name","Age","Gender","Car Company","Car Model","Availability"};
+            	String[] columns= {"ID","Name","Age","Gender","Car Company","Car Model","Availability"};
             	for (int i = 0; i < columns.length; i++) {
             		table.getColumnModel().getColumn(i).setHeaderValue(columns[i]);
 				}
            
             	 
             	 while(rs.next()) { 
-            		 
-                	 String name = rs.getString("name"); 
-                	 String age= rs.getString("age");
-                	 String gender= rs.getString("gender"); 
-                	 String car_comp = rs.getString("car_company"); 
-                	 String car_model= rs.getString("car_model"); 
-                	 String avail= rs.getString("availability"); 
+            		 String id = rs.getString("ID");
+                	 String name = rs.getString("D_name"); 
+                	 String age= rs.getString("Age");
+                	 String gender= rs.getString("Gender"); 
+                	 String car_comp = rs.getString("Car_company"); 
+                	 String car_model= rs.getString("Car_model"); 
+                	 String avail= rs.getString("Availability"); 
                 	 
                 	//save these values in array format
-                	 String [] data = {name,age,gender,car_comp,car_model,avail};
+                	 String [] data = {id,name,age,gender,car_comp,car_model,avail};
                 	 tblData.addRow(data);
                 	 
                 	 }
@@ -99,6 +99,6 @@ public class ShowDrivers extends JFrame{
 				e.printStackTrace();
 			} 
 }
-
+	
 }
 

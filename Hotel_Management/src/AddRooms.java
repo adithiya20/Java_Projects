@@ -135,11 +135,9 @@ private JButton add_room, cancel;
 				}
 	            
 	            JOptionPane.showMessageDialog(null, "Room Successfully Added");
-	            new Reception();
 	            this.setVisible(false);
 	            }
 	            else if(ae.getSource() == cancel){
-	            	new Reception();
 	                this.setVisible(false);
 	            }
 	        }

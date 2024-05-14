@@ -28,6 +28,8 @@ public class Update_Driver extends JFrame implements ActionListener{
 	private JTextField age_textbox;
 	private JLabel availability_text;
 	private JTextField availability_textbox;
+	private JLabel id_text;
+	private JTextField id_textbox;
 
 
 	public Update_Driver() {
@@ -81,7 +83,7 @@ public class Update_Driver extends JFrame implements ActionListener{
 		
 		JLabel title_text = new JLabel("UPDATE DRIVER INFO");
 		title_text.setFont(new Font("Tahoma", Font.BOLD, 21));
-		title_text.setBounds(112, 28, 261, 39);
+		title_text.setBounds(65, 25, 261, 39);
 		contentPane.add(title_text);
 		
 		check_button = new JButton("Check");
@@ -112,6 +114,15 @@ public class Update_Driver extends JFrame implements ActionListener{
 		availability_textbox.setColumns(10);
 		availability_textbox.setBounds(174, 288, 142, 20);
 		contentPane.add(availability_textbox);
+		
+		id_text = new JLabel("ID:");
+		id_text.setBounds(55, 81, 91, 14);
+		contentPane.add(id_text);
+		
+		id_textbox = new JTextField();
+		id_textbox.setColumns(10);
+		id_textbox.setBounds(174, 78, 142, 20);
+		contentPane.add(id_textbox);
 		setVisible(true);
 	}
 
@@ -120,13 +131,14 @@ public class Update_Driver extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource()==update_button){
+			String id = id_textbox.getText();
 			String name = name_textbox.getText();
 			String age = (String)age_textbox.getText();
 			String gender = gender_textbox.getText();
 			String car_company = car_comp_textbox.getText();
 			String car_model= car_model_textbox.getText();
 			String avail= availability_textbox.getText();
-			int result=updatebutton_connection(name,age,gender,car_company,car_model,avail);
+			int result=updatebutton_connection(id,name,age,gender,car_company,car_model,avail);
 			if (result==1) {
 				JOptionPane.showMessageDialog(null, "Driver Successfully Updated");
 			}
@@ -136,12 +148,13 @@ public class Update_Driver extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==check_button) {
 			String[] driver_data=checkbutton_connection();
-			name_textbox.setText(driver_data[0]);
-			age_textbox.setText(driver_data[1]);
-			gender_textbox.setText(driver_data[2]);
-			car_comp_textbox.setText(driver_data[3]);
-			car_model_textbox.setText(driver_data[4]);
-			availability_textbox.setText(driver_data[5]);
+			//id_textbox.setText(driver_data[0]);
+			name_textbox.setText(driver_data[1]);
+			age_textbox.setText(driver_data[2]);
+			gender_textbox.setText(driver_data[3]);
+			car_comp_textbox.setText(driver_data[4]);
+			car_model_textbox.setText(driver_data[5]);
+			availability_textbox.setText(driver_data[6]);
 			
 		}
 		else if(e.getSource() == exit_button) {
@@ -152,27 +165,28 @@ public class Update_Driver extends JFrame implements ActionListener{
 	
 	public String[] checkbutton_connection(){
 		 
-		String query = "SELECT * FROM driver WHERE name='"+name_textbox.getText()+"'";
-		String [] data = new String[6];
+		String query = "SELECT * FROM driver WHERE ID='"+id_textbox.getText()+"'";
+		String [] data = new String[7];
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
          	ResultSet rs = stmt.executeQuery();     	
          	         	 
          	 while(rs.next()) { 
-         		 String name = rs.getString("name"); 
-             	 String age= rs.getString("age"); 
-             	 String gender =rs.getString("gender"); 
-             	 String car_comp= rs.getString("car_company"); 
-             	 String car_model= rs.getString("car_model");
-             	String avail= rs.getString("availability");
-             	 data[0]=name;
-             	 data[1]=age;
-             	 data[2]=gender;
-             	 data[3]=car_comp;
-             	 data[4]=car_model;
-             	 data[5]=avail;
-            	 
+         		 String id = rs.getString("ID");
+         		 String name = rs.getString("D_name"); 
+             	 String age= rs.getString("Age"); 
+             	 String gender =rs.getString("Gender"); 
+             	 String car_comp= rs.getString("Car_company"); 
+             	 String car_model= rs.getString("Car_model");
+             	String avail= rs.getString("Availability");
+             	data[0]=id;
+             	 data[1]=name;
+             	 data[2]=age;
+             	 data[3]=gender;
+             	 data[4]=car_comp;
+             	 data[5]=car_model;
+             	 data[6]=avail;
              	 }
          	 rs.close();
          	 c.getC().close();
@@ -184,9 +198,9 @@ public class Update_Driver extends JFrame implements ActionListener{
 	
 	}
 	
-	public int updatebutton_connection(String name, String age,String gender,String car_company,String car_model,String avail){
+	public int updatebutton_connection(String id,String name, String age,String gender,String car_company,String car_model,String avail){
 		 
-		String query = "UPDATE driver SET name=?,age=?,gender=?,car_company=?,car_model=?,availability=?";
+		String query = "UPDATE driver SET D_name=?,Age=?,Gender=?,Car_company=?,Car_model=?,Availability=? WHERE ID='"+id+"'";
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
@@ -196,6 +210,7 @@ public class Update_Driver extends JFrame implements ActionListener{
          	stmt.setString(4, car_company);
          	stmt.setString(5,car_model);
          	stmt.setString(6,avail);
+ 
          	stmt.executeUpdate();
          	 c.getC().close();
          	 return 1;
@@ -206,5 +221,4 @@ public class Update_Driver extends JFrame implements ActionListener{
         
 	return -1;
 	}
-	
 }

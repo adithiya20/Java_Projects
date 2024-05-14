@@ -39,7 +39,6 @@ public class Reception extends JFrame {
 				try{
 				AddCustomer custom = new AddCustomer();
 				custom.setVisible(true);
-		                        setVisible(false);
 			}catch(Exception e1){
 				e1.printStackTrace();
 			}
@@ -80,7 +79,6 @@ public class Reception extends JFrame {
 		
 			ShowEmployees em = new ShowEmployees();
 			em.setVisible(true);
-			setVisible(false);
 			
 		}
 		catch (Exception e1){
@@ -103,7 +101,6 @@ public class Reception extends JFrame {
 			try{
 			ShowCustomers customer = new ShowCustomers();
 			customer.setVisible(true);				
-			setVisible(false);
 		}
 		catch (Exception e1){
 			e1.printStackTrace();
@@ -117,36 +114,16 @@ public class Reception extends JFrame {
 
         contentPane.add(btnNewButton_3);
 
-		JButton btnNewButton_4 = new JButton("Check Out");
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//check = new CheckOut();
-				//check.setVisible(true);
-				setVisible(false);
-			}
-		});
-		
-		btnNewButton_4.setBounds(10, 192, 200, 30);
-        btnNewButton_4.setBackground(Color.BLACK);
-        btnNewButton_4.setForeground(Color.WHITE);
-
-        contentPane.add(btnNewButton_4);
-
 		JButton btnUpdateCustomer = new JButton("Update Customer Info");
 		btnUpdateCustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
-				//UpdateCheck update = new UpdateCheck();
-				//update.setVisible(true);
-		                        setVisible(false);
-				}
-				catch(Exception e1){
-					e1.printStackTrace();
-				}
+				Update_Customer cs = new Update_Customer();
+				cs.setVisible(true);
+				
 			}
 		});
 		
-		btnUpdateCustomer.setBounds(10, 232, 200, 30);
+		btnUpdateCustomer.setBounds(10, 192, 200, 30);
         btnUpdateCustomer.setBackground(Color.BLACK);
         btnUpdateCustomer.setForeground(Color.WHITE);
 
@@ -156,9 +133,8 @@ public class Reception extends JFrame {
 		bntUpdateRoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					//UpdateRoom room = new UpdateRoom();
-					//room.setVisible(true);
-		             setVisible(false);
+					Update_Room room = new Update_Room();
+					room.setVisible(true);
 				}catch(Exception s)
 				{
 					s.printStackTrace();
@@ -170,21 +146,20 @@ public class Reception extends JFrame {
 				btnUpdateEmployees.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {
-							ShowRooms search = new ShowRooms();
-							search.setVisible(true);
-					        setVisible(false);
+							Update_Employee em = new Update_Employee();
+							em.setVisible(true);
 						}
 						catch (Exception ss){
 							ss.printStackTrace();
 						}
 					}
 				});
-				btnUpdateEmployees.setBounds(10, 313, 200, 30);
+				btnUpdateEmployees.setBounds(10, 273, 200, 30);
 				btnUpdateEmployees.setBackground(Color.BLACK);
 				btnUpdateEmployees.setForeground(Color.WHITE);
 				
 				        contentPane.add(btnUpdateEmployees);
-		bntUpdateRoom.setBounds(10, 272, 200, 30);
+		bntUpdateRoom.setBounds(10, 232, 200, 30);
         bntUpdateRoom.setBackground(Color.BLACK);
         bntUpdateRoom.setForeground(Color.WHITE);
 
@@ -203,7 +178,7 @@ public class Reception extends JFrame {
 				
 			}
 		});
-		btnNewButton_7.setBounds(10, 393, 200, 30);
+		btnNewButton_7.setBounds(10, 353, 200, 30);
         btnNewButton_7.setBackground(Color.BLACK);
         btnNewButton_7.setForeground(Color.WHITE);
 
@@ -211,12 +186,17 @@ public class Reception extends JFrame {
         getContentPane().setBackground(Color.WHITE);
         
         JButton btnUpdateDriver = new JButton("Update Driver Info");
+        btnUpdateDriver.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Update_Driver dr = new Update_Driver();
+        		dr.setVisible(true);
+        	}
+        });
         btnUpdateDriver.setForeground(Color.WHITE);
         btnUpdateDriver.setBackground(Color.BLACK);
-        btnUpdateDriver.setBounds(10, 354, 200, 30);
+        btnUpdateDriver.setBounds(10, 314, 200, 30);
         contentPane.add(btnUpdateDriver);
         
         setVisible(true);
 }
-
 }

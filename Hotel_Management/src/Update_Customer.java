@@ -30,6 +30,8 @@ public class Update_Customer extends JFrame implements ActionListener{
 	private JTextField checkin_textbox;
 	private JTextField checkout_textbox;
 	private JTextField deposit_textbox;
+	private JTextField id_textbox;
+	private JLabel id_text;
 
 
 	public Update_Customer() {
@@ -42,43 +44,43 @@ public class Update_Customer extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 		
 		document_textbox = new JTextField();
-		document_textbox.setBounds(175, 77, 142, 20);
+		document_textbox.setBounds(175, 118, 142, 20);
 		contentPane.add(document_textbox);
 		document_textbox.setColumns(10);
 		
 		JLabel document_text = new JLabel("Document Type:");
-		document_text.setBounds(56, 80, 91, 14);
+		document_text.setBounds(56, 121, 91, 14);
 		contentPane.add(document_text);
 		
 		JLabel phonenum_text = new JLabel("Phone Number:");
-		phonenum_text.setBounds(56, 112, 91, 14);
+		phonenum_text.setBounds(56, 180, 91, 14);
 		contentPane.add(phonenum_text);
 		
 		name_textbox = new JTextField();
 		name_textbox.setColumns(10);
-		name_textbox.setBounds(175, 141, 142, 20);
+		name_textbox.setBounds(175, 149, 142, 20);
 		contentPane.add(name_textbox);
 		
 		JLabel name_text = new JLabel("Name:");
-		name_text.setBounds(56, 144, 91, 14);
+		name_text.setBounds(56, 152, 91, 14);
 		contentPane.add(name_text);
 		
 		gender_textbox = new JTextField();
 		gender_textbox.setColumns(10);
-		gender_textbox.setBounds(175, 180, 142, 20);
+		gender_textbox.setBounds(175, 208, 142, 20);
 		contentPane.add(gender_textbox);
 		
 		JLabel gender_text = new JLabel("Gender:");
-		gender_text.setBounds(56, 183, 91, 14);
+		gender_text.setBounds(56, 211, 91, 14);
 		contentPane.add(gender_text);
 		
 		country_textbox = new JTextField();
 		country_textbox.setColumns(10);
-		country_textbox.setBounds(175, 227, 142, 20);
+		country_textbox.setBounds(175, 239, 142, 20);
 		contentPane.add(country_textbox);
 		
 		JLabel country_text = new JLabel("Country:");
-		country_text.setBounds(56, 230, 91, 14);
+		country_text.setBounds(56, 242, 91, 14);
 		contentPane.add(country_text);
 		
 		JLabel title_text = new JLabel("UPDATE CUSTOMER INFO");
@@ -103,7 +105,7 @@ public class Update_Customer extends JFrame implements ActionListener{
 		
 		phonenum_textbox = new JTextField();
 		phonenum_textbox.setColumns(10);
-		phonenum_textbox.setBounds(175, 109, 142, 20);
+		phonenum_textbox.setBounds(175, 177, 142, 20);
 		contentPane.add(phonenum_textbox);
 		
 		roomnum_textbox = new JTextField();
@@ -141,6 +143,15 @@ public class Update_Customer extends JFrame implements ActionListener{
 		JLabel deposit_text = new JLabel("Deposit:");
 		deposit_text.setBounds(56, 366, 91, 14);
 		contentPane.add(deposit_text);
+		
+		id_textbox = new JTextField();
+		id_textbox.setColumns(10);
+		id_textbox.setBounds(175, 87, 142, 20);
+		contentPane.add(id_textbox);
+		
+		id_text = new JLabel("ID:");
+		id_text.setBounds(56, 90, 91, 14);
+		contentPane.add(id_text);
 		setVisible(true);
 	}
 
@@ -149,7 +160,7 @@ public class Update_Customer extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource()==update_button){
-			
+			String id=id_textbox.getText();
 			String document = document_textbox.getText();
 			String pnum = (String)phonenum_textbox.getText();
 			String name = name_textbox.getText();
@@ -160,7 +171,7 @@ public class Update_Customer extends JFrame implements ActionListener{
 			String checkout= checkout_textbox.getText();
 			String deposit= deposit_textbox.getText();
 			
-			int result=updatebutton_connection(document,pnum,name,gender,country,roomnum,checkin,checkout,deposit);
+			int result=updatebutton_connection(id,document,name,pnum,gender,country,roomnum,checkin,checkout,deposit);
 			if (result==1) {
 				JOptionPane.showMessageDialog(null, "Customer Successfully Updated");
 			}
@@ -170,15 +181,16 @@ public class Update_Customer extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==check_button) {
 			String[] customer_data=checkbutton_connection();
-			document_textbox.setText(customer_data[0]);
-			phonenum_textbox.setText(customer_data[1]);
-			name_textbox.setText(customer_data[2]);
-			gender_textbox.setText(customer_data[3]);
-			country_textbox.setText(customer_data[4]);
-			roomnum_textbox.setText(customer_data[5]);
-			checkin_textbox.setText(customer_data[6]);
-			checkout_textbox.setText(customer_data[7]);
-			deposit_textbox.setText(customer_data[8]);
+			//id_textbox.setText(customer_data[0]);
+			document_textbox.setText(customer_data[1]);
+			phonenum_textbox.setText(customer_data[2]);
+			name_textbox.setText(customer_data[3]);
+			gender_textbox.setText(customer_data[4]);
+			country_textbox.setText(customer_data[5]);
+			roomnum_textbox.setText(customer_data[6]);
+			checkin_textbox.setText(customer_data[7]);
+			checkout_textbox.setText(customer_data[8]);
+			deposit_textbox.setText(customer_data[9]);
 		}
 		else if(e.getSource() == exit_button) {
 			setVisible(false);
@@ -188,32 +200,34 @@ public class Update_Customer extends JFrame implements ActionListener{
 	
 	public String[] checkbutton_connection(){
 		 
-		String query = "SELECT * FROM customer WHERE name='"+name_textbox.getText()+"'";
-		String [] data = new String[9];
+		String query = "SELECT * FROM customer WHERE id='"+id_textbox.getText()+"'";
+		String [] data = new String[10];
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
          	ResultSet rs = stmt.executeQuery();     	
          	         	 
          	 while(rs.next()) { 
-         		 String document = rs.getString("document"); 
-             	 String pnum= rs.getString("phone_number"); 
-             	 String name =rs.getString("name"); 
-             	 String gender= rs.getString("gender"); 
-             	 String country= rs.getString("country");
-             	String roomnum= rs.getString("roomnumber");
-             	String checkin= rs.getString("checkin_time");
-             	String checkout= rs.getString("checkout_time");
-             	String deposit= rs.getString("deposit");
-             	 data[0]=document;
-             	 data[1]=pnum;
-             	 data[2]=name;
-             	 data[3]=gender;
-             	 data[4]=country;
-             	data[5]=roomnum;
-             	data[6]=checkin;
-             	data[7]=checkout;
-             	data[8]=deposit;
+         		 String id = rs.getString("ID");
+         		 String document = rs.getString("Document");
+         		String name =rs.getString("C_name"); 
+             	 String pnum= rs.getString("Phone"); 
+             	 String gender= rs.getString("Gender"); 
+             	 String country= rs.getString("Country");
+             	String roomnum= rs.getString("Roomnumber");
+             	String checkin= rs.getString("Checkin_time");
+             	String checkout= rs.getString("Checkout_time");
+             	String deposit= rs.getString("Deposit");
+             	data[0]=id;
+             	 data[1]=document;
+             	 data[2]=pnum;
+             	 data[3]=name;
+             	 data[4]=gender;
+             	 data[5]=country;
+             	data[6]=roomnum;
+             	data[7]=checkin;
+             	data[8]=checkout;
+             	data[9]=deposit;
             	 
              	 }
          	 rs.close();
@@ -226,16 +240,16 @@ public class Update_Customer extends JFrame implements ActionListener{
 	
 	}
 	
-	public int updatebutton_connection(String document, String pnum,String name,String gender,String country,String roomnumber,String checkin,String checkout, String deposit){
+	public int updatebutton_connection(String id,String document,String name,String pnum,String gender,String country,String roomnumber,String checkin,String checkout, String deposit){
 		 
-		String query = "UPDATE customer SET document=?,phone_number=?,name=?,gender=?,country=?,roomnumber=?,checkin_time=?,checkout_time=?,deposit=?";
+		String query = "UPDATE customer SET Document=?,C_name=?,Phone=?,Gender=?,Country=?,Roomnumber=?,Checkin_time=?,Checkout_time=?,Deposit=? WHERE ID='"+id+"'";
 		
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
          	stmt.setString(1,document);
-         	stmt.setString(2, pnum);
-         	stmt.setString(3, name);
+         	stmt.setString(2, name);
+         	stmt.setString(3, pnum);
          	stmt.setString(4, gender);
          	stmt.setString(5,country);
          	stmt.setString(6,roomnumber);

@@ -43,7 +43,6 @@ public class ShowCustomers extends JFrame{
                JButton back_button = new JButton("Back");
                back_button.addActionListener(new ActionListener() {
                	public void actionPerformed(ActionEvent e) {
-               		new Reception().setVisible(true);
                     setVisible(false);
                	}
                });
@@ -75,26 +74,27 @@ public class ShowCustomers extends JFrame{
 					tblData.setColumnIdentifiers(colName);
 				}
             	
-            	String[] columns= {"Document Type","Phone Number","Name","Gender","Country","Room Number","Check-in Time","Check-out Time","Deposit"};
+            	String[] columns= {"ID","Document Type","Name","Phone Number","Gender","Country","Room Number","Check-in Time","Check-out Time","Deposit"};
             	for (int i = 0; i < columns.length; i++) {
             		table.getColumnModel().getColumn(i).setHeaderValue(columns[i]);
 				}
            
             	 
             	 while(rs.next()) { 
-            		 String id = rs.getString("document"); 
-                	 String number= rs.getString("phone_number"); 
-                	 String name = rs.getString("name"); 
-                	 String gender= rs.getString("gender"); 
-                	 String country = rs.getString("country"); 
-                	 String room_num= rs.getString("roomnumber"); 
-                	 String check_in= rs.getString("checkin_time"); 
-                	 String check_out= rs.getString("checkout_time");
-                	 String deposit= rs.getString("deposit"); 
+            		 String id= rs.getString("ID");
+            		 String document = rs.getString("Document");
+            		 String name = rs.getString("C_name");
+                	 String number= rs.getString("Phone");  
+                	 String gender= rs.getString("Gender"); 
+                	 String country = rs.getString("Country"); 
+                	 String room_num= rs.getString("Roomnumber"); 
+                	 String check_in= rs.getString("Checkin_time"); 
+                	 String check_out= rs.getString("Checkout_time");
+                	 String deposit= rs.getString("Deposit"); 
                 	  
                 	 
                 	//save these values in array format
-                	 String [] data = {id,number,name,gender,country,room_num,check_in,check_out,deposit};
+                	 String [] data = {id,document,name,number,gender,country,room_num,check_in,check_out,deposit};
                 	 //System.out.println(Arrays.toString(data));
                 	 tblData.addRow(data);
                 	 }
@@ -103,5 +103,7 @@ public class ShowCustomers extends JFrame{
 				e.printStackTrace();
 			} 
 	}
-
+public static void main(String[] args) {
+	new ShowCustomers();
+}
 }

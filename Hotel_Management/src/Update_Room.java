@@ -124,7 +124,7 @@ public class Update_Room extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==check_button) {
 			String[] room_data=checkbutton_connection();
-			roomnumber_textbox.setText(room_data[0]);
+			//roomnumber_textbox.setText(room_data[0]);
 			availability_textbox.setText(room_data[1]);
 			cleaning_status_textbox.setText(room_data[2]);
 			price_textbox.setText(room_data[3]);
@@ -139,7 +139,7 @@ public class Update_Room extends JFrame implements ActionListener{
 	
 	public String[] checkbutton_connection(){
 		 
-		String query = "SELECT * FROM room WHERE roomnumber='"+roomnumber_textbox.getText()+"'";
+		String query = "SELECT * FROM room WHERE Roomnumber='"+roomnumber_textbox.getText()+"'";
 		String [] data = new String[5];
          try {
          	Connection_demo c = new Connection_demo();
@@ -147,7 +147,7 @@ public class Update_Room extends JFrame implements ActionListener{
          	ResultSet rs = stmt.executeQuery();     	
          	         	 
          	 while(rs.next()) { 
-         		 String room_number = rs.getString("roomnumber"); 
+         		 String room_number = rs.getString("Roomnumber"); 
              	 String avail= rs.getString("availability"); 
              	 String cleaning_status =rs.getString("cleaning_status"); 
              	 String price= rs.getString("price"); 
@@ -169,17 +169,16 @@ public class Update_Room extends JFrame implements ActionListener{
 	
 	}
 	
-	public int updatebutton_connection(String roomString, String avail,String cleaning_status,String price,String bed_type){
+	public int updatebutton_connection(String roomnum, String avail,String cleaning_status,String price,String bed_type){
 		 
-		String query = "UPDATE room SET roomnumber=?,availability=?,cleaning_status=?,price=?,bed_type=?";
+		String query = "UPDATE room SET Availability=?,Cleaning_status=?,Price=?,Bed_type=? WHERE Roomnumber='"+roomnum+"'";
          try {
          	Connection_demo c = new Connection_demo();
          	PreparedStatement stmt=c.getC().prepareStatement(query);
-         	stmt.setString(1,roomString);
-         	stmt.setString(2, avail);
-         	stmt.setString(3, cleaning_status);
-         	stmt.setString(4, price);
-         	stmt.setString(5,bed_type);
+         	stmt.setString(1, avail);
+         	stmt.setString(2, cleaning_status);
+         	stmt.setString(3, price);
+         	stmt.setString(4,bed_type);
          	stmt.executeUpdate();
          	 c.getC().close();
          	 return 1;
@@ -191,7 +190,4 @@ public class Update_Room extends JFrame implements ActionListener{
 	return -1;
 	}
 	
-	public static void main(String[] args) {
-		new Update_Room();
-	}
 }

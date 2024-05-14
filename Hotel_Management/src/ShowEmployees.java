@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class ShowEmployees extends JFrame{
 	JTable table;
 	public ShowEmployees() {
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setBounds(450, 200, 1100, 600);
 			JPanel contentPane = new JPanel();
 			this.setTitle("EMPLOYEES INFORMATION");
@@ -37,8 +37,7 @@ public class ShowEmployees extends JFrame{
 	        JButton btnNewButton = new JButton("Back");
 			
 			  btnNewButton.addActionListener(new ActionListener() { public void
-			  actionPerformed(ActionEvent e) { new Reception().setVisible(true);
-			  setVisible(false); } });
+			  actionPerformed(ActionEvent e) { setVisible(false); } });
 			 
     		btnNewButton.setBounds(180, 470, 120, 30);
             btnNewButton.setBackground(Color.BLACK);
@@ -65,24 +64,25 @@ public class ShowEmployees extends JFrame{
 					tblData.setColumnIdentifiers(colName);
 				}
             	
-            	String[] columns= {"Name","Age","Gender","Job","Salary","Phone","Email"};
+            	String[] columns= {"ID","Name","Age","Gender","Job","Salary","Phone","Email"};
             	for (int i = 0; i < columns.length; i++) {
             		table.getColumnModel().getColumn(i).setHeaderValue(columns[i]);
 				}
            
             	 
             	 while(rs.next()) { 
-            		 String name = rs.getString("name"); 
-                	 String age= rs.getString("age"); 
-                	 String gender = rs.getString("gender"); 
-                	 String job= rs.getString("job"); 
-                	 String salary = rs.getString("salary"); 
-                	 String phone= rs.getString("phone"); 
-                	 String email= rs.getString("email"); 
+            		 String id = rs.getString("ID");
+            		 String name = rs.getString("E_name"); 
+                	 String age= rs.getString("Age"); 
+                	 String gender = rs.getString("Gender"); 
+                	 String job= rs.getString("Job"); 
+                	 String salary = rs.getString("Salary"); 
+                	 String phone= rs.getString("Phone"); 
+                	 String email= rs.getString("Email"); 
                 	  
                 	 
                 	//save these values in array format
-                	 String [] data = {name,age,gender,job,salary,phone,email};
+                	 String [] data = {id,name,age,gender,job,salary,phone,email};
                 	 tblData.addRow(data);
                 	 
                 	 }
@@ -94,8 +94,5 @@ public class ShowEmployees extends JFrame{
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-}
-public static void main(String[] args) {
-	new ShowEmployees();
 }
 }
